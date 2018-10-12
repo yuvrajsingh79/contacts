@@ -5,7 +5,7 @@ var bodyparser = require('body-parser');
 var cors = require('cors');
 var path = require('path');
 var mongojs = require('mongojs');
-var db = mongojs('mongodb://yuvi:Passw0rd@ds223763.mlab.com:23763/my_contacts',['mycontacts']);
+//var db = mongojs('mongodb://yuvi:Passw0rd@ds223763.mlab.com:23763/my_contacts',['mycontacts']);
 
 
 var app = express();
@@ -14,7 +14,13 @@ const port = 3000;
 const route = require('./routes/route');
 
 //checking mongo connection
-
+mongoose.connect('mongodb://localhost:27017/my_contacts');
+mongoose.connection.on('connected',(err,res) =>{
+    if(err){
+        console.log(`Error in mongo connection : $err`);
+    }
+    console.log(`Connected to mongoDB`);
+})
 
 //adding middleware (bodyparser, cors, routes)
 app.use(cors());

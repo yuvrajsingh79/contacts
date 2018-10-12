@@ -1,8 +1,8 @@
 const express = require('express');
 const router = express.Router();
 var mongojs = require('mongojs');
-var db = mongojs('mongodb://Yuvi:Passw0rd@ds223763.mlab.com:23763/my_contacts',['mycontacts']);
-
+//var db = mongojs('mongodb://Yuvi:Passw0rd@ds223763.mlab.com:23763/my_contacts',['mycontacts']);
+var db = mongojs('mongodb://localhost:27017/my_contacts',['mycontacts']);
 
 //Get All Contacts
 router.get('/contacts', (req, res, next) => {
